@@ -1,0 +1,31 @@
+tensorflow module was not available for 3.14.
+
+So I followed below steps:
+
+# Install pyenv and pyenv-virtualenv (one-time)
+brew update
+brew install pyenv pyenv-virtualenv
+
+# Add pyenv init to zsh (example)
+echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
+echo 'export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
+echo 'eval "$(pyenv init --path)"' >> ~/.zshrc
+echo 'eval "$(pyenv virtualenv-init -)"' >> ~/.zshrc
+source ~/.zshrc
+
+# Install Python 3.12.1
+pyenv install 3.12.1
+
+# Create a pyenv virtualenv (name it e.g. tf-3.12)
+pyenv virtualenv 3.12.1 tf-3.12
+
+# Use it for the current project directory
+cd /path/to/your/project
+pyenv local tf-3.12
+
+# Confirm
+python --version
+which python
+
+# Install tensorflow
+python install tensorflow
